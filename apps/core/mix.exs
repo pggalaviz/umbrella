@@ -37,7 +37,14 @@ defmodule Herps.Core.Mixfile do
   defp deps do
     [
       {:postgrex, "~> 0.13.3"},
-      {:ecto, "~> 2.2"}
+      {:ecto, "~> 2.2", override: true},
+      {:timex, "~> 3.1"},
+      {:timex_ecto, "~> 3.1"},
+      {:secure_random, "~> 0.5.1"},
+      # Umbrella
+      {:messenger, in_umbrella: true},
+      # Other
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false}
     ]
   end
 

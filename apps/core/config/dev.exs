@@ -8,3 +8,5 @@ config :core, Herps.Core.Repo,
   database: "herps_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :logger, :console, format: "[$level] $message\n"

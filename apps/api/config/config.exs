@@ -7,7 +7,8 @@ use Mix.Config
 
 # General application configuration
 config :api,
-  namespace: Herps.API
+  namespace: Herps.API,
+  ecto_repos: []
 
 # Configures the endpoint
 config :api, Herps.API.Endpoint,
@@ -21,6 +22,24 @@ config :api, Herps.API.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+# Configure Ueberauth
+config :ueberauth, Ueberauth,
+  providers: [
+    google: {Ueberauth.Strategy.Google, [default_scope: "emails profile plus.me"]}
+  ]
+config :ueberauth, Ueberauth.Strategy.Google.OAuth,
+  client_id: System.get_env("GOOGLE_CLIENT_ID"),
+  client_secret: System.get_env("GOOGLE_CLIENT_SECRET")
+
+# Config Guardian Authentication
+config :api, Herps.API.Auth.Guardian,
+  allowed_algos: ["HS512"],
+  issuer: "_herps_",
+  ttl: {10, :days},
+  verify_issuer: true,
+  secret_key: System.get_env("GUARDIAN_SECRET") ||
+    "tlgTtW13As9IujrsCKa16DR0P0RD8WBjf7tHySyYqhkIzdBzU/c/VF5QqQ2LJiR2"
 
 config :api, :generators,
   context_app: :core

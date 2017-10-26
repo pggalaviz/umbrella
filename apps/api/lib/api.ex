@@ -23,6 +23,8 @@ defmodule Herps.API do
       import Plug.Conn
       import Herps.API.Router.Helpers
       import Herps.API.Gettext
+      alias Herps.API.ErrorView
+      alias Herps.API.ChangesetView
     end
   end
 

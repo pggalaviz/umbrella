@@ -37,11 +37,17 @@ defmodule Herps.API.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      # Main
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
       {:gettext, "~> 0.11"},
+      {:cowboy, "~> 1.0"},
+      # Umbrella Apps
       {:core, in_umbrella: true},
-      {:cowboy, "~> 1.0"}
+      # Auth
+      {:ueberauth, "~> 0.4.0"},
+      {:ueberauth_google, "~> 0.6.0"},
+      {:guardian, "~> 1.0.0-beta.0"}
     ]
   end
 

@@ -17,7 +17,6 @@ defmodule Herps.Core.DataCase do
   using do
     quote do
       alias Herps.Core.Repo
-
       import Ecto
       import Ecto.Changeset
       import Ecto.Query

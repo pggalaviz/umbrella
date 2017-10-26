@@ -1,4 +1,7 @@
 defmodule Herps.Core.Repo do
+  @moduledoc """
+    Main Repo for the Core app.
+  """
   use Ecto.Repo, otp_app: :core
 
   @doc """
